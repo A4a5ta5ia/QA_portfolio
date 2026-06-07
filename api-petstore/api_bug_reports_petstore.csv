@@ -1,0 +1,587 @@
+"id","title","test case id","author","assignee","actual result","status","milestone","severity","external issues","attachments","tags"
+"54","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a string value in category ""id"" field","54","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a string passed in the ""id"" field inside the ""category"" object and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request
+* Pet is not created 
+* Response body contains validation error message indicating that ""id"" field for ""category"" field must be an integer","Open","","Major","","",""
+"53","Server returns 200 OK instead of 400 Bad Request while updating a pet with a value not included in enum list in ""status"" field","75","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the update request and returns a 200 OK status code when an invalid string value (""flying"") that is not defined in the status enum list is passed in the ""status"" field: 
+{ ""id"": 205, 
+""category"": { ""id"": 1, ""name"": ""cats"" }, 
+""name"": ""InvalidStatusPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""flying"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not updated 
+* Response body contains validation error indicating that ""status"" field value must match one of the allowed enum values (available, pending, sold)","Open","","Normal","","",""
+"52","Server returns 200 OK instead of 400 Bad Request while updating a pet with a null value in the ""name"" field","74","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the update request and returns a 200 OK status code when a null value is passed in the ""name"" field: 
+{ ""id"": 204, 
+""category"": { ""id"": 1, ""name"": ""cats"" }, 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not updated 
+* Response body contains validation error indicating that root ""name"" field is required and cannot be null","Open","","Normal","","",""
+"51","Server returns 200 OK instead of 400 Bad Request while updating a pet with an empty request body","73","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an empty JSON object is sent:
+{ ""id"": 9223372036854775807,
+""photoUrls"": [],
+""tags"": [] }
+
+**Expected Result:**
+
+* Status Code: 400 Bad Reques
+* Pet is not created
+* Response body contains validation error indicating that request body cannot be empty","Open","","Major","","",""
+"50","Server returns 200 OK instead of 400 Bad Request while updating a pet with missing ""name"" field","72","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the update request and returns a 200 OK status code when the ""name"" field is omitted: 
+{ ""id"": 203, 
+""category"": { ""id"": 1, ""name"": ""cats"" }, 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:**
+
+*  Status Code: 400 Bad Request 
+* Pet is not updated 
+* Response body contains validation error indicating that root ""name"" field is required and cannot be omitted","Open","","Normal","","",""
+"49","Server returns 500 Internal Server Error instead of 400 Bad Request while updating a pet with a string value in root ""id"" field","71","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a text string passed in the root integer ""id"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not updated 
+* Response body contains validation error indicating that root ""id"" field must be an integer","Open","","Major","","",""
+"48","Server returns 200 OK instead of 400 Bad Request while adding a new pet with whitespace only in ""status"" field","63","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a string containing only whitespaces ("" "") is passed in the ""status"" field: 
+{ ""id"": 200, ""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""InvalidStatusPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": "" "" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""status"" field cannot consist of whitespace only and must match allowed enum values","Open","","Normal","","",""
+"47","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an empty string in ""status"" field","62","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an empty string is passed in the ""status"" field, accepting it as a valid value: 
+{ ""id"": 199, 
+""category"": { ""id"": 1, ""name"": ""cats"" }, 
+""name"": ""InvalidStatusPet"", ""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": """" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""status"" field cannot be empty and must match allowed enum values","Open","","Normal","","",""
+"46","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a boolean value in ""status"" field","61","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a boolean value (true) is passed in the ""status"" field. Instead of rejecting the request, the server converts the boolean into a text string (""true""): 
+{ ""id"": 198, 
+""category"": { ""id"": 1, ""name"": ""cats"" }, 
+""name"": ""InvalidStatusPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""true"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""status"" field must be a string type","Open","","Normal","","",""
+"45","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an integer value in ""status"" field","60","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a numeric value is passed in the ""status"" field. Instead of rejecting the request, the server converts the integer into a text string: 
+{ ""id"": 197, 
+""category"": { ""id"": 1, ""name"": ""cats"" }, 
+""name"": ""InvalidStatusPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""123"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""status"" field must be a string typ","Open","","Normal","","",""
+"44","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a value not included in enum list in ""status"" field","59","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an invalid string value (""happy"") that is not defined in the status enum list is passed in the ""status"" field: 
+{ ""id"": 196, ""
+category"": { ""id"": 1, ""name"": ""cats"" }, ""
+name"": ""InvalidStatusPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""happy"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""status"" field value must match one of the allowed enum values (available, pending, sold)","Open","","Normal","","",""
+"43","Server returns 200 OK instead of 400 Bad Request while adding a new pet with missing ""name"" field inside ""category"" object","58","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when the ""name"" field is completely omitted from the ""category"" object. Instead of rejecting the request, the server omits the parameter from the created category structure: 
+{ ""id"": 195, 
+""category"": { ""id"": 1 }, 
+""name"": ""InvalidCategoryTypePet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request
+* Pet is not created 
+* Response body contains validation error indicating that category ""name"" field is required and cannot be omitted","Open","","Normal","","",""
+"42","Server returns 200 OK instead of 400 Bad Request while adding a new pet with missing ""id"" field inside ""category"" object","57","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when the ""id"" field is completely omitted from the ""category"" object. Instead of rejecting the request, the server automatically generates a numeric value (0): 
+{ ""id"": 194, 
+""category"": { ""id"": 0, ""name"": ""cats"" }, 
+""name"": ""InvalidCategoryTypePet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that category ""id"" field is required and cannot be omitted","Open","","Normal","","",""
+"41","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a null value in category ""name"" field","56","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a null value is passed in the category ""name"" field. Instead of rejecting the request, the server omits the field from the created category object: 
+{ ""id"": 193, 
+""category"": { ""id"": 1 },
+ ""name"": ""InvalidCategoryTypePet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that category ""name"" field is required and cannot be null","Open","","Normal","","",""
+"40","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a null value in category ""id"" field","55","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a null value is passed in the category ""id"" field. Instead of rejecting the request, the server converts the null value into a default numeric value (0): 
+{ ""id"": 192, 
+""category"": { ""id"": 0, ""name"": ""cats"" }, 
+""name"": ""InvalidCategoryTypePet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that category ""id"" field is required and cannot be null","Open","","Normal","","",""
+"39","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an integer value in category ""name"" field","52","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle an integer value passed in the ""name"" field of the ""category"" object and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that category ""name"" field must be a string","Open","","Major","","",""
+"38","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an array instead of an object in ""category"" field","51","Anastasia Kozub","Unassigned","**Actual Result:** 
+The server fails to handle a JSON array passed instead of a JSON object in the ""category"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""category"" field must be an object","Open","","Major","","",""
+"37","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a boolean value instead of an object in ""category"" field","50","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a boolean value passed instead of a JSON object in the ""category"" field and crashes with a 500 Internal Server Error code and a message: { ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""category"" field must be an object","Open","","Major","","",""
+"36","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an empty object in ""category"" field","49","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an empty JSON object is passed in the ""category"" field. Instead of rejecting the request, the server automatically generates a default numeric value for the missing ""id"" field and omits the missing ""name"" field:
+ { ""id"": 186, 
+""category"": { ""id"": 0 }, 
+""name"": ""EmptyObjectCategoryPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""category"" object cannot be empty","Open","","Normal","","",""
+"35","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an empty string instead of an object in ""category"" field","48","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle an empty string value passed instead of a JSON object in the ""category"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""category"" field must be an object","Open","","Major","","",""
+"34","Server returns 200 OK instead of 400 Bad Request while adding a new pet with tag object containing only ""id"" field (missing ""name"")","47","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a tag object with a missing ""name"" field is passed inside the ""tags"" array: 
+{ ""id"": 184, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""OnlyTagIdPet"", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1 } ], 
+""status"": ""available"" }
+
+**Expected Result**: 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that tag ""name"" field is required and cannot be omitted","Open","","Normal","","",""
+"33","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an empty object inside ""tags"" array","46","Anastasia Kozub","Unassigned","**Actual Result**: The server successfully processes the request and returns a 200 OK status code when an empty JSON object is passed inside the ""tags"" array. Instead of rejecting the request, the server automatically generates a default numeric value 0 for the missing ""id"" field and omits the missing ""name"" field: 
+{ ""id"": 183, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""EmptyObjectInTagsPet"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 0 } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that objects inside the ""tags"" array cannot be empty and must contain required fields","Open","","Not set","","",""
+"32","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an integer value in tag ""name"" field inside ""tags"" array","45","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an integer value is passed in the tag ""name"" field. Instead of rejecting the request, the server converts the integer into a text string:
+{ ""id"": 182, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""IntegerNameInTagPet"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""12345"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that tag ""name"" field must be a string type","Open","","Normal","","",""
+"31","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a string value in tag ""id"" field inside ""tags"" array","44","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a string value passed in the numeric ""id"" field of a tag object inside the ""tags"" array, crashing with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that tag ""id"" field must be an integer","Open","","Major","","",""
+"30","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an empty string element inside ""tags"" array","43","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to process an empty string value passed as an element inside the ""tags"" array instead of a JSON object, crashing with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that elements inside the ""tags"" array must be valid objects and cannot be strings","Open","","Not set","","",""
+"29","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an empty string instead of an array in ""tags"" field","42","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle an empty string value passed instead of a JSON array in the ""tags"" field and crashes with a 500 Internal Server Error code and a message: { ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""tags"" field must be an array of objects","Open","","Not set","","",""
+"28","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a null element inside ""tags"" array","41","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a null value is passed as an element inside the ""tags"" array. The object is created with a corrupted array structure:
+{ ""id"": 178, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""NullInsideTagsArrayPet"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ null ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that elements inside the ""tags"" array must be valid objects and cannot be null","Open","","Major","","",""
+"27","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a JSON object inside ""photoUrls"" array","40","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to process a JSON object passed as an element inside the ""photoUrls"" array and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array containing only string types","Open","","Major","","",""
+"26","Server returns 200 OK instead of 400 Bad Request while adding a new pet with mixed data types in ""photoUrls"" array","39","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when numeric (123) and boolean (true) values are passed inside the ""photoUrls"" array. Instead of rejecting the request, the server converts these non-string types into text strings (""123"", ""true""):
+{ ""id"": 176, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""MixedTypesPhotoUrlsPet"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"", ""123"", ""true"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array containing only string types","Open","","Normal","","",""
+"25","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a boolean value instead of an array in ""photoUrls"" field","38","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a boolean value (true) passed instead of a JSON array in the ""photoUrls"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array of strings","Open","","Not set","","",""
+"24","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an empty string instead of an array in ""photoUrls"" field","37","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle an empty string value passed instead of a JSON array in the ""photoUrls"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", ""message"": 
+""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array of strings","Open","","Not set","","",""
+"23","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an integer value instead of an array in ""photoUrls"" field","36","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a numeric integer value passed instead of a JSON array in the ""photoUrls"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array of strings","Open","","Major","","",""
+"22","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with an object value instead of an array in ""photoUrls"" field","35","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a JSON object passed instead of a JSON array in the ""photoUrls"" field and crashes with a 500 Internal Server Error code and a message
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array of strings","Open","","Major","","",""
+"21","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a string value instead of an array in ""photoUrls"" field","34","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a string value passed instead of a JSON array in the ""photoUrls"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""photoUrls"" field must be an array of strings","Open","","Major","","",""
+"20","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a mixed alphanumeric string in ""id"" field","33","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a mixed alphabetic and numeric string value (""123abc"") passed in the numeric ""id"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""id"" field must be a valid numeric type and cannot contain letters","Open","","Not set","","",""
+"19","Server returns 200 OK with an unexpected huge numeric ID instead of 400 Bad Request while adding a new pet with an empty string in ""id"" field","32","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an empty string ("""") is passed in the ""id"" field. Instead of rejecting the request or generating a standard sequential ID, the server put a huge number (9223372036854775807) to the pet's ID:
+{ ""id"": 9223372036854775807,
+ ""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""EmptyIDPet"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""id"" field must be a valid numeric type and cannot be empty","Open","","Major","","",""
+"18","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a boolean value in ""id"" field","31","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a boolean value (true) passed in the numeric ""id"" field and crashes with a 500 Internal Server Error code and an message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""id"" must be a numeric type","Open","","Not set","","",""
+"17","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a negative value in ""id"" field in the request body","29","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a negative number is passed in the ""id"" field. 
+
+The object is created with a negative identifier:
+{ ""id"": -1, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""Negative"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""id"" must be a positive number","Open","","Normal","","",""
+"16","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a null value in ""id"" field in the request body","28","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a null value is passed in the ""id"" field. 
+
+The object is created with a null identifier:
+{ ""id"": null, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""Rocky"", ""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error indicating that ""id"" field cannot be null","Open","","Major","","",""
+"15","Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a string value in ""id"" field","27","Anastasia Kozub","Unassigned","**Actual Result:** The server fails to handle a string value (""abc"") passed in the ""id"" field and crashes with a 500 Internal Server Error code and a message: 
+{ ""code"": 500, 
+""type"": ""unknown"", 
+""message"": ""something bad happened"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+
+
+* Pet is not created","Open","","Major","","",""
+"14","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an integer value in ""name"" field in the request body","22","Anastasia Kozub","Unassigned","**Actual Result:** The server accepts an integer value in the ""name"" field, converts it to a string, and returns a 200 OK status code with the following response body:
+{ ""id"": 167, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""12345"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }
+
+**Expected Result:** Status Code: 
+
+* 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error message indicating that ""name"" field must be a string type","Open","","Normal","","",""
+"13","System accepts a ""name"" field exceeding the max. allowed length in the request body while adding a new pet","21","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code instead of 400 Bad Request when the value in the ""name"" field exceeds the max. allowed length (256 characters). 
+
+The object is created with the oversized name:
+{ ""id"": 166, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], ""status"": ""available"" }
+
+**Expected Result:** Status Code: 
+
+* 400 Bad Request 
+* Pet is not created 
+* Response body contains a validation error message indicating that the ""name"" field exceeds the max. allowed length (255 characters)","Open","","Normal","","",""
+"12","Server returns 200 OK instead of 400 Bad Request while adding a new pet with only whitespaces in required ""name"" field in the request body","20","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a value consisting only of whitespaces is passed in the required ""name"" field. 
+
+The object is created with spaces as the name:
+{ ""id"": 165, 
+""category"": { ""id"": 1, ""name"": ""Birds"" }, 
+""name"": "" "", 
+""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], ""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request 
+* Pet is not created 
+* Response body contains validation error message indicating that ""name"" field must not contain only whitespace characters","Open","","Major","","",""
+"11","Server returns 200 OK instead of 400 Bad Request while adding a new pet with an empty string in required ""name"" field in the request body","19","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when an empty string is passed in the required ""name"" field. 
+
+The object is created with an empty value for the name:
+{ ""id"": 164, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": """", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], ""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request Response. 
+* Pet is not created 
+* Response body contains validation error message indicating that ""name"" field cannot be empty","Open","","Major","","",""
+"10","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a null value in required ""name"" field in the request body","18","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when a null value is passed in the required ""name"" field.
+
+The object is created with the ""name"" key completely removed from the response body:
+{ ""id"": 163,
+""category"": { ""id"": 2, ""name"": ""Cats"" },
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ],
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ],
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request Response.
+* Pet is not created.
+* Response body contains validation error message indicating that ""name"" field cannot be null","Open","","Major","","",""
+"9","Server returns 200 OK instead of 400 Bad Request while adding a new pet with a missing required ""name"" field in the request body","17","Anastasia Kozub","Unassigned","**Actual Result:** The server successfully processes the request and returns a 200 OK status code when the required ""name"" field is completely missing from the request body.
+
+The object is created without the ""name"" key:
+{ ""id"": 162,
+""category"": { ""id"": 1, ""name"": ""Dogs"" },
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ],
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ],
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request Response. 
+* Pet is not created.
+* Response body contains an error message about missing required field ""name"".","Open","","Major","","",""
+"8","Server returns 200 OK instead of 400 Bad Request while adding a new pet in ""name"" field with a boolean value","16","Anastasia Kozub","Unassigned","**Actual result:** The server accepts a boolean value in the ""name"" field, converts it to a string, and returns a 200 OK status code with the following response body:
+
+{ ""id"": 161,
+""category"": { ""id"": 1, ""name"": ""Dogs"" },
+""name"": ""false"",
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ],
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ],
+""status"": ""available"" }
+
+**Expected Result:** 
+
+* Status Code: 400 Bad Request Response. 
+* Pet is not created.
+* Response body contains a validation error message indicating that the ""name"" field must be a string","Open","","Major","","",""
+"7","Server returns 200 OK instead of 400 Bad Request during adding a new pet when required ""name"" field contains an integer value instead of a string","22","Anastasia Kozub","Unassigned","Status Code: 200 OK
+
+The server successfully processed the request, automatically converted the integer value into a string, and added a new pet with the string ""12345"" in the required ""name"" field.
+
+Response body: 
+{ ""id"": 167, 
+""category"": { ""id"": 1, ""name"": ""Dogs"" }, 
+""name"": ""12345"", 
+""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"" ], 
+""tags"": [ { ""id"": 1, ""name"": ""test"" } ], 
+""status"": ""available"" }","Open","","Major","","",""
+"6","Server returns 200 OK instead of 400 Bad Request during adding a new pet when required ""name"" field exceeds max length (256 characters)","21","Anastasia Kozub","Unassigned","Status Code: 200 OK.
+
+The server successfully processed the request and added a new pet with a 256-character string in the required ""name"" field, violating the maximum length restriction.
+
+Response body: { ""id"": 166, ""category"": { ""id"": 1, ""name"": ""Dogs"" }, ""name"": ""AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"", ""photoUrls"": [ ""[https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://www.google.com/search?q=https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47%3Fq%3D80%26w%3D686%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D)"" ], ""tags"": [ { ""id"": 1, ""name"": ""test"" } ], ""status"": ""available"" }","Open","","Major","","",""
+"5","Server returns 200 OK instead of 400 Bad Request for ""name"" field with only whitespaces","20","Anastasia Kozub","Unassigned","Status Code: 200 OK.
+
+Response body contains the created pet object with whitespaces saved in the ""name"" field:
+
+{ ""id"": 165, ""category"": { ""id"": 1, ""name"": ""Birds"" }, ""name"": "" "", ""photoUrls"": [ ""[https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D](https://www.google.com/search?q=https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711%3Fq%3D80%26w%3D687%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D)"" ], ""tags"": [ { ""id"": 1, ""name"": ""test"" } ], ""status"": ""available"" }","Open","","Not set","","",""
+"4","Server returns 200 OK instead of 400 Bad Request for empty string in ""name"" field","19","Anastasia Kozub","Unassigned","Status Code: 200 OK. Response body contains the created pet object with the name field as an empty string","Open","","Not set","","",""
+"3","Server returns 200 OK instead of 400 Bad Request during pet creation via POST method when required ""name"" field is null","18","Anastasia Kozub","Unassigned","Status Code: 200 OK. 
+Response body contains the created pet object with the name field set to null.","Open","","Not set","","",""
+"2","POST /pet: Server returns 200 OK instead of 400 Bad Request when mandatory name field is missing","17","Anastasia Kozub","Unassigned","Status Code: 200 OK. Response body contains the created pet object without the name field","Open","","Not set","","",""
+"1","Server returns 200 OK instead of 400 Bad Request when name field contains a boolean value","16","Anastasia Kozub","Unassigned","* Status Code: 200 OK
+* Response body contains the created pet object with the boolean value true in the name field.","Open","","Major","","",""

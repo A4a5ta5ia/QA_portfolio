@@ -1,0 +1,3658 @@
+{
+  "info": {
+    "_postman_id": "c9f6b8c1-2e17-4269-95e3-b715b6019d3c",
+    "name": "Pet Store",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52913369",
+    "_collection_link": "https://go.postman.co/collection/52913369-c9f6b8c1-2e17-4269-95e3-b715b6019d3c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Pet",
+      "item": [
+        {
+          "name": "POST /pet: Add a new pet to the store",
+          "item": [
+            {
+              "name": "PET-1 Pet creation with all valid fields",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 150,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Rex\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"friendly\" }], \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-2 Pet creation with valid required field and optional fields with null value",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"category\": null,\r\n\"name\": \"Max\",\r\n\"photoUrls\": null,\r\n\"tags\": null,\r\n\"status\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-3 Pet creation with min.required field (name only)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"name\": \"Buddy\"\r\n }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-4 Pet creation with \"pending\" value in \"Status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 151,\r\n\"category\": { \"id\": 2, \"name\": \"Cats\" },\r\n\"name\": \"Simon\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"friendly\" }],\r\n\"status\": \"pending\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-5 Pet creation with \"sold\" value in \"Status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 152,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Bailey\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 2, \"name\": \"sold_pet\" }],\r\n\"status\": \"sold\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-6 Pet creation with valid min. name length (1 character)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 153,\r\n\"category\": { \"id\": 2, \"name\": \"Cats\" },\r\n\"name\": \"A\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 2, \"name\": \"small\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-7 Pet creation with valid min. name length+1 (2 characters)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 154,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Bo\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 3, \"name\": \"active\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-8 Pet creation with valid max. name length -1 (254 characters)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 155,\r\n\"category\": { \"id\": 3, \"name\": \"Birds\" },\r\n\"name\": \"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 3, \"name\": \"rare\" }],\r\n\"status\": \"sold\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-9 Pet creation with valid max. name length (255 characters)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 156,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 5, \"name\": \"dog\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-10 Pet creation with multiple tags",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 157,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Rocky\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [\r\n{ \"id\": 4, \"name\": \"active\"},\r\n{ \"id\": 5, \"name\": \"dog\"},\r\n{ \"id\": 10, \"name\": \"vaccinated\" },\r\n{ \"id\": 11, \"name\": \"trained\" }\r\n],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-11 Pet creation with empty array in \"photoUrls\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 158,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"EmptyPhotoUrlsPet\",\r\n\"photoUrls\": [],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-12 Pet creation with large numeric ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 9223372036854775000,\r\n\"category\": { \"id\": 1, \"name\": \"Cats\" },\r\n\"name\": \"Simon\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"friendly\" }],\r\n\"status\": \"pending\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-13 Pet creation with numeric ID sent as string",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": \"159\",\r\n\"category\": { \"id\": 1, \"name\": \"Cats\" },\r\n\"name\": \"Simon\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"friendly\" }],\r\n\"status\": \"pending\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-14 Pet creation with zero as ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 0,\r\n\"category\": { \"id\": 0, \"name\": \"Others\" },\r\n\"name\": \"Junior\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-15 Pet creation with multiple photo URLs",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 160,\r\n\"category\": { \"id\": 3, \"name\": \"Birds\" },\r\n\"name\": \"Parrot\",\r\n\"photoUrls\": [\r\n\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\r\n\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\r\n\"https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"\r\n],\r\n\"tags\": [{ \"id\": 23, \"name\": \"colorful\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-16 Pet creation with boolean value in \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 161,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": false,\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-17 Pet creation with missing required field \"name\"",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 162,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-18 Pet creation with null value in required field \"name\"",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 163,\r\n\"category\": { \"id\": 2, \"name\": \"Cats\" },\r\n\"name\": null,\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-19 Pet creation with empty string in required field \"name\"",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 164,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-20 Pet creation with only whitespaces value in required field \"name\"",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 165,\r\n\"category\": { \"id\": 1, \"name\": \"Birds\" },\r\n\"name\": \"                  \",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-21 Pet creation with exceeding max. length in \"name\" field (256 characters)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 166,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-22 Pet creation with integer value instead of a string value in \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 167,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": 12345,\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-23 Pet creation with numeric string in \"name\" field (digits only)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 168,\r\n\"category\": { \"id\": 2, \"name\": \"Cats\" },\r\n\"name\": \"12345678\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-24 Pet creation with URL value in \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 169,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"https://google.com\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET- 25 Pet creation with special characters and digits in \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 170,\r\n\"category\": { \"id\": 3, \"name\": \"Birds\" },\r\n\"name\": \"T-Bo5e&#Co'2.\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-27 Pet creation with invalid data type in \"id\" field (string instead of number)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": \"abc\",\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Charlie\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 2, \"name\": \"friendly\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-28 Pet creation with null value in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": null,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Rocky\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-29 Pet creation with negative value in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": -1,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"Negative\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-30 Pet creation with boolean value in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": true,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"BoolPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-31 Pet creation with floating-point value in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 12.34,\r\n\"category\": { \"id\": 3, \"name\": \"Birds\" },\r\n\"name\": \"Float\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-32 Pet creation with empty string value in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": \"\",\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"EmptyIDPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-33 Pet creation with mixed numeric string in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": \"123abc\",\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"MixID\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-34 Pet creation with string value in \"photoUrls\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 171,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"StringPhotoUrlsPet\",\r\n\"photoUrls\": \"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-35 Pet creation with object value instead of an array in \"photoUrls\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 172,\r\n\"category\": { \"id\": 2, \"name\": \"Cats\" },\r\n\"name\": \"ObjectPhotoUrlsPet\",\r\n\"photoUrls\": { \"url\": \"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\" },\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-36 Pet creation with integer value instead of an array in photoUrls field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 173,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"NumberPhotoUrlsPet\",\r\n\"photoUrls\": 12345,\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-37 Pet creation with empty string instead of array in \"photoUrls\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 174,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"EmptyStringPhotoUrlsPet\",\r\n\"photoUrls\": \"\",\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-38 Pet creation with boolean instead of an array in photoUrls field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 175,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"BooleanPhotoUrlsPet\",\r\n\"photoUrls\": true,\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-39 Pet creation with mixed data types in \"photoUrls\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 176,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"MixedTypesPhotoUrlsPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\", 123, true],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-40 Pet creation with object inside \"photoUrls\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 177,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"ObjectInsidePhotoUrlsPet\",\r\n\"photoUrls\": [{ \"url\": \"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\" }],\r\n\"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-41 Pet creation with null element inside \"tags\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 178,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"NullInsideTagsArrayPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [null],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-42 Pet creation with empty string instead of array in \"tags\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 179,\r\n\"category\": { \"id\": 3, \"name\": \"Birds\" },\r\n\"name\": \"TagsAsEmptyStringPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1724864863815-1469c8b74711?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": \"\",\r\n\"status\": \"available\"\r\n}}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-43 Pet creation with empty string element inside \"tags\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 180,\r\n\"category\": { \"id\": 2, \"name\": \"Cats\" },\r\n\"name\": \"EmptyStringInTagsArrayPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [\"\"],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-44 Pet creation with string instead of integer in \"id\" field inside \"tags\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 181,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"StringIdInTagPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": \"abc\", \"name\": \"test\"}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-45 Pet creation with integer instead of string in \"name\" field inside \"tags\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 182,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"IntegerNameInTagPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1, \"name\": 12345}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-46 Pet creation with empty object inside \"tags\" array",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 183,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"EmptyObjectInTagsPet\",\r\n\"photoUrls\": [\"https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-47 Pet creation with tag object containing only \"name\" field (missing \"id\")",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 184,\r\n\"category\": { \"id\": 1, \"name\": \"Dogs\" },\r\n\"name\": \"OnlyTagIdPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-48 Pet creation with empty string instead of object in \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 185,\r\n\"category\": \"\",\r\n\"name\": \"EmptyStringCategoryPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-49 Pet creation with empty object in \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 186,\r\n\"category\": {},\r\n\"name\": \"EmptyObjectCategoryPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-50 Pet creation with boolean instead of object in \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 187,\r\n\"category\": true,\r\n\"name\": \"BooleanCategoryPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-51 Pet creation with array instead of object in \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": 188,\r\n\"category\": [{\"id\": 1, \"name\": \"Dogs\"}],\r\n\"name\": \"ArrayCategoryPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-52 Pet creation with integer instead of string in category \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 189,\r\n  \"category\": { \"id\": 1, \"name\": 777 },\r\n  \"name\": \"InvalidNameTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-53 Pet creation with string instead of integer in category \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 191,\r\n  \"category\": { \"id\": \"abc\", \"name\": \"cats\" },\r\n  \"name\": \"InvalidCategoryTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET- 54 Pet creation with empty string instead of object in \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 190,\r\n  \"category\": \"\",\r\n  \"name\": \"InvalidCategoryTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{ \"id\": 1, \"name\": \"test\" }],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-55 Pet creation with null in category \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 192,\r\n  \"category\": {\r\n    \"id\": null,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidCategoryTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-56 Pet creation with null in category \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 193,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": null\r\n  },\r\n  \"name\": \"InvalidCategoryTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-57 Pet creation with missing \"id\" field for \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 194,\r\n  \"category\": {\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidCategoryTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-58 Pet creation with missing \"name\" field for \"category\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 195,\r\n  \"category\": {\r\n    \"id\": 1\r\n  },\r\n  \"name\": \"InvalidCategoryTypePet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-59 Pet creation with value not included in enum list in \"status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 196,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidStatusPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"happy\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-60 Pet creation with integer instead of string in \"status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 197,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidStatusPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": 123\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-61 Pet creation with boolean instead of string in \"status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 198,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidStatusPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-62 Pet creation with empty string in \"status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 199,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidStatusPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-63 Pet creation with whitespace in \"status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 200,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"InvalidStatusPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"   \"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "GET/pet: Find a pet by ID",
+          "item": [
+            {
+              "name": "PET-64 Find a pet by valid pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/150",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "150"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-65 Find a pet with string instead of integer in pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/abc",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "abc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-66 Find a pet with non-existing pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/999999999",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "999999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-67 Find a pet with negative integer in pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/-1",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "-1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "PUT/pet: Updating an existing pet",
+          "item": [
+            {
+              "name": "PET-68 Update pet with valid request body",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 201,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"UpdatedPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-69 Update pet via PUT request and verify changes via GET request",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n \"id\": 202,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"dogs\"\r\n  },\r\n  \"name\": \"UpdatedPetName\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1666777247416-ee7a95235559?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"updated\"}],\r\n  \"status\": \"pending\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-69 Verify changes via GET request",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/202",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "202"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-70 Update only required fields of existing pet",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"MinimalUpdatePet\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-71 Update pet with string value in \"id\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n\"id\": \"abc\",\r\n\"category\": {\r\n\"id\": 1,\r\n\"name\": \"cats\"\r\n},\r\n\"name\": \"InvalidIdPet\",\r\n\"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n\"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n\"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-72 Update pet without \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 203,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-73 Update pet with empty request body",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-74 Update pet with null value in \"name\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 204,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": null,\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"available\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-75 Update pet with value outside allowed enum in \"status\" field",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {\r",
+                      "    pm.response.to.have.status(400);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"id\": 205,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"cats\"\r\n  },\r\n  \"name\": \"InvalidStatusPet\",\r\n  \"photoUrls\": [\"https://plus.unsplash.com/premium_photo-1667030474693-6d0632f97029?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"test\"}],\r\n  \"status\": \"flying\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "DELETE/pet: Delete a pet",
+          "item": [
+            {
+              "name": "PET-76 Delete existing pet with valid pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "    pm.response.to.have.status(200);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/150",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "150"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-76 Verify that pet is deleted via GET request",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/150",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "150"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-77 Repeat DELETE request for already deleted pet",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/150",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "150"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-78 Delete pet with non-existing pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/999999",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "999999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-79 Delete pet with string value instead of pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {\r",
+                      "    pm.response.to.have.status(404);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/abc",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    "abc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PET-81 Delete pet without pet ID",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"Status code is 405\", function () {\r",
+                      "    pm.response.to.have.status(405);\r",
+                      "});"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "https://petstore.swagger.io/v2/pet/",
+                  "protocol": "https",
+                  "host": [
+                    "petstore",
+                    "swagger",
+                    "io"
+                  ],
+                  "path": [
+                    "v2",
+                    "pet",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "console.log(\"Pre-request script folder\")"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "console.log(\"Post-request script folder\")"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "console.log(\"Pre-request script collection\")"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "console.log(\"Post-request script collection\")"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "value": ""
+    }
+  ]
+}
