@@ -7,7 +7,7 @@ Welcome! This repository showcases my practical experience in Manual QA Testing,
 ## 📨 Contacts & Resume
 *   **Email:** [anastasia.kozub779@gmail.com](mailto:anastasia.kozub779@gmail.com)
 *   **LinkedIn:** www.linkedin.com/in/anastasia-kozub-2bb6b5289
-*   **Resume (PDF):** [Download My CV](./Anastasia Kozub_QA_CV.pdf)
+*   **Resume (PDF):** [Download My CV](/Anastasia Kozub_QA_CV.pdf)
 
 ---
 
