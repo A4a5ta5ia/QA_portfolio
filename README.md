@@ -6,8 +6,8 @@ Welcome! This repository showcases my practical experience in Manual QA Testing,
 
 ## 📨 Contacts & Resume
 *   **Email:** [anastasia.kozub779@gmail.com](mailto:anastasia.kozub779@gmail.com)
-*   **LinkedIn:** www.linkedin.com/in/anastasia-kozub-2bb6b5289
-*   **Resume (PDF):** [Download My CV](/Anastasia Kozub_QA_CV.pdf)
+*   **LinkedIn:** [Anastasia Kozubl.com](www.linkedin.com/in/anastasia-kozub-2bb6b5289)
+*   **Resume (PDF):** [Download My CV](/Anastasia_Kozub_QA_CV.pdf)
 
 ---
 
@@ -57,7 +57,7 @@ Full-cycle API testing of a Petstore service aimed at verifying backend business
 * **Artifacts and Documentation:**
     * [Open Test Run and Execution Status in Qase.io](https://app.qase.io/public/report/a2007fb324e8712a38eb9594f9c64d96c218fe6d) — complete test suite execution with detailed steps.
     * [Download API Bug Reports (CSV)](./api-petstore/api_bug_reports_petstore.csv) — comprehensive document containing all bugs found during API execution.
-    * [Download Postman Collection](./api-petstore/Pet Store.postman_collection.json) — local file for request execution.
+    * [Download Postman Collection](./api-petstore/Pet_Store_postman_collection.json) — local file for request execution.
 * **Metrics:** 79 test cases executed in total: 31 Passed, 48 Failed.
 * **Selected Bug Examples:**
     * **[API_BUG_D44] Major: Validation Failure on Enum Values:** Server returns 200 OK instead of 400 Bad Request when adding a new pet with a value not included in the enum list for the "status" field.
