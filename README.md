@@ -55,11 +55,12 @@ Full-cycle API testing of a Petstore service aimed at verifying backend business
 
 * **Scope and Approaches:** Functional positive and negative testing of REST endpoints (GET, POST, PUT, DELETE) utilizing Boundary Value Analysis and Equivalence Partitioning for input parameters. Verification of JSON schemas, data persistence, and error handling mechanisms.
 * **Artifacts and Documentation:**
-    * [Open Test Run and Execution Status in Qase.io](https://app.qase.io/public/report/a2007fb324e8712a38eb9594f9c64d96c218fe6d) — complete test suite execution with detailed steps.
-    * [Download API Bug Reports (CSV)](./api-petstore/api_bug_reports_petstore.csv) — comprehensive document containing all bugs found during API execution.
-    * [Download Postman Collection](./api-petstore/Pet_Store_postman_collection.json) — local file for request execution.
+    * [Open Test Run and Execution Status in Qase.io](./api_test_cases_test_run.pdf) complete test suite and execution results exported from Qase.io (selected bug examples are listed below).
+    * [Download API Bug Reports (CSV)](./api-petstore/api_bug_reports_petstore.csv) — document containing all bugs found during API execution exported from Qase.io.
+    * [Download Postman Collection](./api-petstore/Pet_Store_postman_collection.json) — local file for request execution exported from Postman.
 * **Metrics:** 79 test cases executed in total: 31 Passed, 48 Failed.
-* **Selected Bug Examples:**
-    * **[API_BUG_D44] Major: Validation Failure on Enum Values:** Server returns 200 OK instead of 400 Bad Request when adding a new pet with a value not included in the enum list for the "status" field.
-    * **[API_BUG_D39] Major: Server Crash on Invalid Data Type:** Server returns 500 Internal Server Error instead of 400 Bad Request when an integer value is passed inside the category "name" field.
-    * **[API_BUG_D34] Minor: Missing Required Field Handling:** Server returns 200 OK instead of 400 Bad Request when adding a new pet with a tag object containing only an "id" field while missing the mandatory "name" field.
+* **Selected Bug Examples (Short Overview):**
+    * **[API_BUG_D54] Major:** Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a string value in category "id" field.
+Response body contains validation error message indicating that "id" field for "category" field must be an integer
+    * **[API_BUG_D25] Major:** Server returns 500 Internal Server Error instead of 400 Bad Request while adding a new pet with a boolean value instead of an array in "photoUrls" field.
+    * **[API_BUG_D17] Major:** Server returns 200 OK instead of 400 Bad Request while adding a new pet with a negative value in "id" field in the request body.
