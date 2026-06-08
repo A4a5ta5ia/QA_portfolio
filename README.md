@@ -55,7 +55,7 @@ Full-cycle API testing of a Petstore service aimed at verifying backend business
 
 * **Scope and Approaches:** Functional positive and negative testing of REST endpoints (GET, POST, PUT, DELETE) utilizing Boundary Value Analysis and Equivalence Partitioning for input parameters. Verification of JSON schemas, data persistence, and error handling mechanisms.
 * **Artifacts and Documentation:**
-    * [Open Test Run and Execution Status in Qase.io](./api_test_cases_test_run.pdf) complete test suite and execution results exported from Qase.io (selected bug examples are listed below).
+    * [Open Test Run and Execution Status in Qase.io](./api-petstore/api_test_cases_test_run.pdf) complete test suite and execution results exported from Qase.io (selected bug examples are listed below).
     * [Download API Bug Reports (CSV)](./api-petstore/api_bug_reports_petstore.csv) — document containing all bugs found during API execution exported from Qase.io.
     * [Download Postman Collection](./api-petstore/Pet_Store_postman_collection.json) — local file for request execution exported from Postman.
 * **Metrics:** 79 test cases executed in total: 31 Passed, 48 Failed.
